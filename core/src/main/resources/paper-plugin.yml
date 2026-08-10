@@ -1,0 +1,11 @@
+name: PhysicsControl
+version: "2.0.0"
+main: org.btuk.pcontrol.PhysicsControl
+description: 'Paper server world physics controller plugin for Minecraft 26.1.2+'
+api-version: "26.1.2"
+load-before: [MultiWorld, MultiVerse]
+author: Build the UK
+commands:
+    physicscontrol:
+        description: 'Basic PhysicsControl plugin command'
+        aliases: ["pcontrol", "physicsc", "pc"]
