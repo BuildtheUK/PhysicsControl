@@ -74,6 +74,7 @@ WEEPING_VINES_GROWING: Weeping vines growing
 TWISTING_VINES_GROWING: Twisting vines growing
 POINTED_DRIPSTONES_GROWING: Pointed dripstones growing
 GLOW_BERRIES_GROWING: Glow berries vines growing
+WIND_CHARGE_BLOCK_INTERACTIONS: Wind charge block interactions
 DEBUG_MESSAGES: Debug messages
 ALLOW_UNRECOGNIZED_ACTIONS: Allow unrecognized actions
 IGNORED_STATE: Technical trigger

@@ -11,16 +11,6 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public interface TextHelper {
-    static boolean isAdventureFullySupported() {
-        try {
-            Class<?> componentClass = Class.forName("net.kyori.adventure.text.Component");
-            //noinspection JavaReflectionMemberAccess
-            ItemMeta.class.getDeclaredMethod("displayName", componentClass);
-            return true;
-        } catch (ReflectiveOperationException e) {
-            return false;
-        }
-    }
 
     @Nonnull
     Text create(@Nonnull String text, @Nonnull CommonColor color);

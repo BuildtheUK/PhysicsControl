@@ -207,6 +207,12 @@ org/bukkit/event/entity/EntityChangeBlockEvent:
     min-version: "1.19"
     from: "#physicscontrol_world_air"
     to: "frogspawn"
+  37:
+    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
+    min-version: "1.21"
+    non-falling-by:
+      - "wind_charge"
+      - "breeze_wind_charge"
 org/bukkit/event/block/BlockFromToEvent:
   1:
     trigger: "IGNORED_STATE" # Strange thing from FluidTypeFlowing

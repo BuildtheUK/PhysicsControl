@@ -42,9 +42,6 @@ public class EntityChangeBlockEventListener extends PhysicsListener {
         parser.registerParser(this.rulesNonFallingEntityChangeBlockEventBy);
     }
 
-    // Prevent client bug with disappearing blocks on start falling (fixed on paper 1.16.5, spigot 1.19.4 and client 1.18.2)
-    private final boolean fixBlocksGravity = !this.data.hasVersion(1, 19, 4);
-
     @EventHandler(ignoreCancelled = true, priority = EventPriority.HIGH)
     private void on(EntityChangeBlockEvent event) {
         Material from = event.getBlock().getType();
@@ -65,9 +62,6 @@ public class EntityChangeBlockEventListener extends PhysicsListener {
                 if (trigger == null) {
                     this.unrecognizedAction(event, event.getBlock().getLocation(), from + " > " + to + " (by falling " + by + ")");
                     return;
-                }
-                if (this.fixBlocksGravity) {
-                    updateBlockOnCancel = true;
                 }
             } else {
                 EntityType by = event.getEntity().getType();

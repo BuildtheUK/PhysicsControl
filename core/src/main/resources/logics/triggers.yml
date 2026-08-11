@@ -92,6 +92,11 @@ PLAYERS_INTERACTIONS:
     defaults: true
     icon:
       - '1.17+ GLOW_BERRIES'
+  WIND_CHARGE_BLOCK_INTERACTIONS:
+    realtime: false
+    defaults: true
+    icon:
+      - '1.21+ WIND_CHARGE'
 ENTITIES_INTERACTIONS:
   BURNING_ARROWS_ACTIVATE_TNT:
     realtime: false
