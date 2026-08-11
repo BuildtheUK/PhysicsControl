@@ -13,7 +13,6 @@ import org.btuk.pcontrol.text.CommonColor;
 import org.btuk.pcontrol.text.CommonDecoration;
 import org.btuk.pcontrol.text.Text;
 import org.btuk.pcontrol.text.TextHelper;
-import org.btuk.pcontrol.util.PCMaterial;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -26,7 +25,7 @@ public final class PControlTriggerInventory extends PControlInventory {
     private static final boolean WARN_ON_SET_ICONS_FOR_UNAVAILABLE_TRIGGERS = false;
     private static final ItemStack DISALLOWED_TRIGGER = new ItemStack(Material.BARRIER);
     private static final ItemStack WRONG_ICON_TRIGGER = new ItemStack(Material.PAPER);
-    private static final PCMaterial BACK_ITEM_MATERIAL = PCMaterial.ofLegacyOrModern("WOOL:14", "RED_WOOL");
+    private static final ItemStack BACK_ITEM = new ItemStack(Material.RED_WOOL);
 
     private final PControlDataBukkit data;
     private final Map<PControlTrigger, Short> slotByTrigger;
@@ -61,7 +60,7 @@ public final class PControlTriggerInventory extends PControlInventory {
 
     @Nonnull
     private ItemStack createBackStack() {
-        ItemStack back = BACK_ITEM_MATERIAL.createStack(1);
+        ItemStack back = BACK_ITEM.clone();
         ItemMeta meta = back.getItemMeta();
         if (meta == null) throw new IllegalStateException();
         this.data.getTextHelper().setStackName(meta, this.data.getMessage("select-another-category-item"));

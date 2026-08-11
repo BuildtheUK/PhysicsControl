@@ -11,7 +11,7 @@ import java.util.Objects;
 public class PCMaterial {
     @Nullable
     public static PCMaterial getMaterial(@Nonnull String name) {
-        Material result = Material.getMaterial(name.toUpperCase());
+        Material result = Material.matchMaterial(name.toUpperCase());
         return result == null ? null : new PCMaterial(result, null);
     }
 
@@ -19,19 +19,6 @@ public class PCMaterial {
     public static PCMaterial valueOf(@Nonnull String name) {
         PCMaterial result = getMaterial(name);
         if (result == null) throw new IllegalArgumentException(name);
-        return result;
-    }
-
-    @Nonnull
-    public static PCMaterial ofLegacyOrModern(@Nonnull String legacyName, @Nonnull String modernName) {
-        PCMaterial result = getMaterial(modernName);
-        if (result == null) {
-            new IllegalArgumentException(
-                "Unable to find modern material " + modernName + ", " +
-                    "trying to use BARRIER..."
-            ).printStackTrace();
-            result = new PCMaterial(Material.BARRIER, null);
-        }
         return result;
     }
 

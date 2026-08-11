@@ -14,8 +14,8 @@ public class MaterialUtils {
 
     static {
         AIR_MATERIALS.add(Material.AIR);
-        if (Material.getMaterial("CAVE_AIR") != null) AIR_MATERIALS.add(Material.CAVE_AIR);
-        if (Material.getMaterial("VOID_AIR") != null) AIR_MATERIALS.add(Material.VOID_AIR);
+        AIR_MATERIALS.add(Material.CAVE_AIR);
+        AIR_MATERIALS.add(Material.VOID_AIR);
     }
 
     @Nonnull

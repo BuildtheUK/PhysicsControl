@@ -41,10 +41,10 @@ public final class BlockTypesSet extends KeyedEnumSet<Material, PCMaterial> {
         BlockTypesSet result = new BlockTypesSet(allowAir);
         try {
             consumer.accept(result);
-        } catch (NoSuchFieldError e) {
-            String materialName = e.getMessage();
+        } catch (NoSuchFieldError | IllegalArgumentException e) {
+            String name = e.getMessage();
             logger.warning("Unable to fill set " + setName + ". " +
-                "Block " + materialName + " not found. Plugin may not work correctly");
+                "Block " + name + " not found. Plugin may not work correctly");
         } catch (NullPointerException e) {
             String tagName = e.getMessage();
             if (tagName != null && tagName.startsWith("Cannot invoke \"org.bukkit.Tag.getValues()\" because \"org.bukkit.Tag.")) {

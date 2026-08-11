@@ -121,7 +121,8 @@ org/bukkit/event/entity/EntityChangeBlockEvent:
     non-falling-from: "#physicscontrol_wooden_doors"
   15:
     trigger: "IGNORED_STATE" # Boats destroys lilies
-    non-falling-by: "boat"
+    min-version: "1.21.2"
+    non-falling-by: "#physicscontrol_boats"
   16:
     trigger: "SHEEPS_EATING_GRASS"
     non-falling-by: "sheep"
@@ -211,8 +212,29 @@ org/bukkit/event/entity/EntityChangeBlockEvent:
     trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
     min-version: "1.21"
     non-falling-by:
-      - "wind_charge"
-      - "breeze_wind_charge"
+      - "WIND_CHARGE"
+      - "BREEZE_WIND_CHARGE"
+org/bukkit/event/entity/ProjectileHitEvent:
+  1:
+    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
+    min-version: "1.21"
+    projectile-by:
+      - "WIND_CHARGE"
+      - "BREEZE_WIND_CHARGE"
+org/bukkit/event/entity/ExplosionPrimeEvent:
+  1:
+    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
+    min-version: "1.21"
+    exploding-by:
+      - "WIND_CHARGE"
+      - "BREEZE_WIND_CHARGE"
+org/bukkit/event/entity/EntityExplodeEvent:
+  1:
+    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
+    min-version: "1.21"
+    exploding-by:
+      - "WIND_CHARGE"
+      - "BREEZE_WIND_CHARGE"
 org/bukkit/event/block/BlockFromToEvent:
   1:
     trigger: "IGNORED_STATE" # Strange thing from FluidTypeFlowing
@@ -433,6 +455,10 @@ org/bukkit/event/player/PlayerInteractEvent:
     trigger: "IGNORED_STATE"
     min-version: "1.19"
     physical-material: "sculk_shrieker"
+  10:
+    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
+    min-version: "1.21"
+    item-used: "WIND_CHARGE"
 org/bukkit/event/entity/EntityInteractEvent:
   1:
     trigger: "IGNORED_STATE"
@@ -463,6 +489,16 @@ org/bukkit/event/entity/EntityInteractEvent:
     trigger: "IGNORED_STATE"
     min-version: "1.20"
     material: "calibrated_sculk_sensor"
+  9:
+    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
+    min-version: "1.21"
+    interacted-by:
+      - "WIND_CHARGE"
+      - "BREEZE_WIND_CHARGE"
+    material:
+      - "#physicscontrol_redstone_passive_inputs"
+      - "#physicscontrol_fence_gates"
+      - "#physicscontrol_trapdoors"
 org/bukkit/event/block/EntityBlockFormEvent:
   1:
     trigger: "SNOW_GOLEMS_CREATE_SNOW"
@@ -497,6 +533,9 @@ org/bukkit/event/world/StructureGrowEvent:
       - "dark_oak"
       - "mega_redwood"
       - "tall_birch"
+      - "mangrove"
+      - "cherry"
+      - "pale_oak"
   2:
     trigger: "GIANT_MUSHROOMS_GROWING"
     to:

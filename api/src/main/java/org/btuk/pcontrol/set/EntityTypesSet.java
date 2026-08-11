@@ -16,7 +16,7 @@ public final class EntityTypesSet extends KeyedEnumSet<EntityType, EntityType> {
         EntityTypesSet result = new EntityTypesSet();
         try {
             consumer.accept(result);
-        } catch (NoSuchFieldError e) {
+        } catch (NoSuchFieldError | IllegalArgumentException e) {
             logger.warning("Unable to fill set " + setName + ". " +
                 "Entity type " + e.getMessage() + " not found. Plugin may not work correctly");
         }

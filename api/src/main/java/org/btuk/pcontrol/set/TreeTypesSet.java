@@ -16,7 +16,7 @@ public final class TreeTypesSet extends CustomEnumSet<TreeType, TreeType> {
         TreeTypesSet result = new TreeTypesSet();
         try {
             consumer.accept(result);
-        } catch (NoSuchFieldError e) {
+        } catch (NoSuchFieldError | IllegalArgumentException e) {
             logger.warning("Unable to fill set " + setName + ". " +
                 "Tree type " + e.getMessage() + " not found. Plugin may not work correctly");
         }

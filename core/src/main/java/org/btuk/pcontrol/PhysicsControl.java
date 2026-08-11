@@ -1,8 +1,12 @@
 package org.btuk.pcontrol;
 
+import io.papermc.paper.command.brigadier.BasicCommand;
+import io.papermc.paper.command.brigadier.CommandSourceStack;
+import io.papermc.paper.command.brigadier.Commands;
+import io.papermc.paper.plugin.lifecycle.event.LifecycleEventManager;
+import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -15,6 +19,8 @@ import org.bukkit.event.world.WorldLoadEvent;
 import org.bukkit.event.world.WorldUnloadEvent;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
+
 import org.btuk.pcontrol.data.trigger.EventsListenerParser;
 import org.btuk.pcontrol.data.trigger.PControlTrigger;
 import org.btuk.pcontrol.inventory.PControlCategoryInventory;
@@ -22,17 +28,20 @@ import org.btuk.pcontrol.inventory.PControlInventory;
 import org.btuk.pcontrol.listener.block.*;
 import org.btuk.pcontrol.listener.custom.BoneMealUsageListener;
 import org.btuk.pcontrol.listener.entity.EntityChangeBlockEventListener;
+import org.btuk.pcontrol.listener.entity.EntityExplodeEventListener;
 import org.btuk.pcontrol.listener.entity.EntityInteractEventListener;
+import org.btuk.pcontrol.listener.entity.ExplosionPrimeEventListener;
 import org.btuk.pcontrol.listener.entity.ProjectileHitEventListener;
 import org.btuk.pcontrol.listener.player.PlayerInteractEventListener;
 import org.btuk.pcontrol.listener.world.StructureGrowEventListener;
 import org.btuk.pcontrol.rules.TriggerRules;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 import java.util.StringJoiner;
 import java.util.function.Supplier;
 
-public final class PhysicsControl extends JavaPlugin implements Listener {
+public final class PhysicsControl extends JavaPlugin implements Listener, BasicCommand {
     private PControlDataBukkit data;
 
     @Override
@@ -53,6 +62,12 @@ public final class PhysicsControl extends JavaPlugin implements Listener {
         EventsListenerParser parser = new EventsListenerParser(this.data);
         this.registerListeners(parser);
         parser.parseAllEvents();
+
+        LifecycleEventManager<@NotNull Plugin> manager = getLifecycleManager();
+        manager.registerEventHandler(LifecycleEvents.COMMANDS, event -> {
+            final Commands commands = event.registrar();
+            commands.register("physicscontrol", "Basic PhysicsControl plugin command", List.of("pcontrol", "physicsc", "pc"), this);
+        });
 
         this.data.reloadConfigs();
     }
@@ -83,6 +98,10 @@ public final class PhysicsControl extends JavaPlugin implements Listener {
             () -> new EntityChangeBlockEventListener(this.data, parser));
         this.reg("org.bukkit.event.entity.EntityInteractEvent",
             () -> new EntityInteractEventListener(this.data, parser));
+        this.reg("org.bukkit.event.entity.EntityExplodeEvent",
+            () -> new EntityExplodeEventListener(this.data, parser));
+        this.reg("org.bukkit.event.entity.ExplosionPrimeEvent",
+            () -> new ExplosionPrimeEventListener(this.data, parser));
         this.reg("org.bukkit.event.entity.ProjectileHitEvent",
             () -> new ProjectileHitEventListener(this.data, parser));
         this.reg("org.bukkit.event.player.PlayerInteractEvent",
@@ -108,20 +127,6 @@ public final class PhysicsControl extends JavaPlugin implements Listener {
         HandlerList.unregisterAll((Plugin) this);
         this.data.unloadData();
         this.data = null;
-    }
-
-    @Override
-    public boolean onCommand(@Nonnull CommandSender sender, @Nonnull Command command, @Nonnull String label, @Nonnull String[] args) {
-        if (args.length == 0) {
-            this.openGui(sender);
-            return true;
-        }
-        switch (args[0].toLowerCase()) {
-            case "reload" -> this.reload(sender);
-            case "tp" -> this.teleport(sender, args);
-            default -> this.switchTrigger(sender, args);
-        }
-        return true;
     }
 
     private void openGui(@Nonnull CommandSender sender) {
@@ -237,5 +242,20 @@ public final class PhysicsControl extends JavaPlugin implements Listener {
     @EventHandler(ignoreCancelled = true)
     private void on(WorldUnloadEvent event) {
         this.data.unloadWorldData(event.getWorld());
+    }
+
+    @Override
+    public void execute(CommandSourceStack commandSourceStack, String[] args) {
+        CommandSender sender = commandSourceStack.getSender();
+        if (args.length == 0) {
+            this.openGui(sender);
+            return;
+        }
+        switch (args[0].toLowerCase()) {
+            case "reload" -> this.reload(sender);
+            case "tp" -> this.teleport(sender, args);
+            default -> this.switchTrigger(sender, args);
+        }
+        return;
     }
 }

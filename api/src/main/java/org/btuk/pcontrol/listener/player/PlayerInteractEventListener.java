@@ -9,6 +9,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 import org.btuk.pcontrol.PhysicsListener;
 import org.btuk.pcontrol.data.PControlData;
 import org.btuk.pcontrol.data.trigger.EventsListenerParser;
@@ -22,21 +23,34 @@ public class PlayerInteractEventListener extends PhysicsListener {
         this.data, PlayerInteractEvent.class, "physical-material");
     private final MaterialRules rulesPlayerInteractEventClickedMaterial = new MaterialRules(
         this.data, PlayerInteractEvent.class, "right-clicked-material");
+    private final MaterialRules rulesPlayerInteractEventItemUsed = new MaterialRules(
+        this.data, PlayerInteractEvent.class, "item-used");
 
     public PlayerInteractEventListener(@Nonnull PControlData data, @Nonnull EventsListenerParser parser) {
         super(data);
         parser.registerParser(this.rulesPlayerInteractEventPhysicalMaterial);
         parser.registerParser(this.rulesPlayerInteractEventClickedMaterial);
+        parser.registerParser(this.rulesPlayerInteractEventItemUsed);
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
     private void on(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+        World world = player.getWorld();
+
+        ItemStack item = event.getItem();
+        if (item != null) {
+            PControlTrigger trigger = this.rulesPlayerInteractEventItemUsed.findTrigger(item.getType());
+            if (trigger != null) {
+                this.data.cancelIfDisabled(event, world, trigger);
+                if (event.isCancelled()) return;
+            }
+        }
+
         Block interactedBlock = event.getClickedBlock();
         if (interactedBlock == null) return;
         if (event.getAction() == Action.PHYSICAL) {
             if (event.getBlockFace() != BlockFace.SELF) return;
-            Player player = event.getPlayer();
-            World world = interactedBlock.getWorld();
             Material material = interactedBlock.getType();
 
             PControlTrigger trigger = this.rulesPlayerInteractEventPhysicalMaterial.findTrigger(material);
@@ -50,7 +64,6 @@ public class PlayerInteractEventListener extends PhysicsListener {
             Material clickedType = interactedBlock.getType();
             PControlTrigger trigger = this.rulesPlayerInteractEventClickedMaterial.findTrigger(clickedType);
             if (trigger != null) {
-                World world = interactedBlock.getWorld();
                 this.data.cancelIfDisabled(event, world, trigger);
             }
         }

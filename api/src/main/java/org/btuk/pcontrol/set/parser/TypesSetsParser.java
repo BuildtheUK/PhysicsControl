@@ -103,7 +103,7 @@ public class TypesSetsParser {
                         .map(keyed -> (E) keyed)
                         .collect(Collectors.toList()));
                 } catch (Throwable t) {
-                    throw new RuntimeException("Unable to parse element \"" + elementRaw + "\"", t);
+                    Bukkit.getLogger().warning("[PhysicsControl] Unable to parse element \"" + elementRaw + "\" in " + tagRegistryName + ": " + t.getMessage());
                 }
             }
         };

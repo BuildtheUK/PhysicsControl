@@ -52,7 +52,10 @@ public abstract class CustomEnumSet<E extends Enum<E>, T> extends CustomSet<T> {
     public CustomEnumSet<E, T> add(@Nonnull String... elementNames) {
         List<T> elements = new ArrayList<>();
         for (String elementName : elementNames) {
-            elements.add(this.enumToElement(Enum.valueOf(this.enumClass, elementName), elementName));
+            E enumValue = org.btuk.pcontrol.util.JavaUtils.getEnum(this.enumClass, elementName);
+            if (enumValue != null) {
+                elements.add(this.enumToElement(enumValue, elementName));
+            }
         }
         this.add(elements);
         return this;

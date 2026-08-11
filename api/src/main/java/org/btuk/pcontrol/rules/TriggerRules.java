@@ -60,7 +60,7 @@ public abstract class TriggerRules<T> {
                 this.data.log().info("Trigger " + trigger
                     + " registered with " + rulesAdded + " " + (rulesAdded == 1 ? "rule" : "rules"));
             }
-        } else {
+        } else if (trigger != this.data.getTriggersRegisty().getIgnoredState()) {
             this.data.log().warning("Trigger " + trigger + " is unavailable at current server version");
         }
 

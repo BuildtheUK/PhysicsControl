@@ -19,6 +19,7 @@ pressure_plates:
 redstone_passive_inputs:
   - 'tripwire_hook'
   - 'tripwire'
+  - 'lever'
   - '#physicscontrol_pressure_plates'
   - '*-1.12.2 wood_button'
   - '*-1.12.2 stone_button'
@@ -83,8 +84,7 @@ bone_meal_herbs:
   - '1.13+ lilac'
   - '1.13+ rose_bush'
   - '1.13+ peony'
-  - '1.14+ cornflower'
-  - '1.14+ lily_of_the_valley'
+  - '1.14+ #flowers'
 little_mushrooms:
   - 'red_mushroom'
   - 'brown_mushroom'
@@ -139,12 +139,13 @@ fences:
   - '*-1.13.2 spruce_fence'
   - '*-1.12.2 fence'
   - '*-1.12.2 nether_fence'
-# - '*-1.12.2 iron_fence'
   - '1.13-1.13.2 oak_fence'
   - '1.13-1.13.2 nether_brick_fence'
-# - '1.13-1.13.2 iron_bars'
-# - '1.14+ iron_bars'
   - '1.14+ #fences'
+fence_gates:
+  - '1.13+ #fence_gates'
+trapdoors:
+  - '1.13+ #trapdoors'
 saplings:
   - '*-1.12.2 sapling'
   - '1.13+ #saplings'
@@ -214,3 +215,5 @@ all_dead_corals:
 end_portal_frames:
   - '*-1.12.2 ender_portal_frame'
   - '1.13+ end_portal_frame'
+boats:
+  - '1.21.2+ #boat'

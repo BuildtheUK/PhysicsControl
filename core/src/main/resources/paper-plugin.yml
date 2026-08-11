@@ -5,7 +5,3 @@ description: 'Paper server world physics controller plugin for Minecraft 26.1.2+
 api-version: "26.1.2"
 load-before: [MultiWorld, MultiVerse]
 author: Build the UK
-commands:
-    physicscontrol:
-        description: 'Basic PhysicsControl plugin command'
-        aliases: ["pcontrol", "physicsc", "pc"]
