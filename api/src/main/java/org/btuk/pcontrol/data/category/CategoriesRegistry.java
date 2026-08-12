@@ -44,8 +44,7 @@ public class CategoriesRegistry {
     }
 
     private void parseCategories() {
-        File configFile = FileUtils.createConfigFileIfNotExist(this.data.getPlugin(),
-            "logics/categories.yml", "logics/categories.yml");
+        File configFile = new File(this.data.getPlugin().getDataFolder(), "logics/categories.yml");
         YamlConfiguration rootSection = YamlConfiguration.loadConfiguration(configFile);
 
         for (String categoryName : rootSection.getKeys(false)) {

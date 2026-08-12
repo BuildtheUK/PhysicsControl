@@ -23,9 +23,9 @@ import java.util.Map;
 public final class PControlTriggerInventory extends PControlInventory {
 
     private static final boolean WARN_ON_SET_ICONS_FOR_UNAVAILABLE_TRIGGERS = false;
-    private static final ItemStack DISALLOWED_TRIGGER = new ItemStack(Material.BARRIER);
-    private static final ItemStack WRONG_ICON_TRIGGER = new ItemStack(Material.PAPER);
-    private static final ItemStack BACK_ITEM = new ItemStack(Material.RED_WOOL);
+    private static final ItemStack DISALLOWED_TRIGGER = ItemStack.of(Material.BARRIER);
+    private static final ItemStack WRONG_ICON_TRIGGER = ItemStack.of(Material.PAPER);
+    private static final ItemStack BACK_ITEM = ItemStack.of(Material.RED_WOOL);
 
     private final PControlDataBukkit data;
     private final Map<PControlTrigger, Short> slotByTrigger;

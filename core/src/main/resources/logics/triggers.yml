@@ -1,419 +1,419 @@
 MOBS_INTERACTIONS:
   RABBITS_EATING_CARROTS:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 carrot_item'
       - '1.13+ carrot'
   VILLAGERS_FARMING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'WHEAT'
   SHEEPS_EATING_GRASS:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 WOOL'
       - '1.13+ WHITE_WOOL'
   SNOW_GOLEMS_CREATE_SNOW:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'SNOW_BLOCK'
   SILVERFISHES_HIDING_IN_BLOCKS:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 MONSTER_EGGS:4'
       - '1.13+ INFESTED_CRACKED_STONE_BRICKS'
   ZOMBIES_BREAK_DOORS:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 SKULL_ITEM:2'
       - '1.13+ ZOMBIE_HEAD'
   ENDERMANS_GRIEFING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'ENDER_PEARL'
   WITHERS_GRIEFING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 SKULL_ITEM:1'
       - '1.13+ WITHER_SKELETON_SKULL'
   TURTLES_LAYING_EGGS:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.13+ TURTLE_EGG'
   FROGSPAWN_LAYING_AND_SPAWNING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.19+ FROGSPAWN'
   WITHER_CREATE_WITHER_ROSE_BLOCKS:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.14+ WITHER_ROSE'
   FOXES_EATS_FROM_SWEET_BERRY_BUSHES:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.14+ SWEET_BERRIES'
   RAVAGERS_DESTROY_BLOCKS:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.14+ RAVAGER_SPAWN_EGG'
 PLAYERS_INTERACTIONS:
   PLAYERS_FLINT_USAGE:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'FLINT_AND_STEEL'
   END_PORTAL_FRAMES_FILLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 ENDER_PORTAL_FRAME'
       - '1.13+ END_PORTAL_FRAME'
   PLAYERS_BONE_MEAL_USAGE:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 INK_SACK:15'
       - '1.13+ BONE_MEAL'
   GLOW_BERRIES_PICKING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.17+ GLOW_BERRIES'
   WIND_CHARGE_BLOCK_INTERACTIONS:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.21+ WIND_CHARGE'
 ENTITIES_INTERACTIONS:
   BURNING_ARROWS_ACTIVATE_TNT:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'TNT'
   FARMLANDS_TRAMPLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 SOIL'
       - '1.13+ FARMLAND'
   DRAGON_EGGS_TELEPORTING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'DRAGON_EGG'
   FROSTED_ICE_PHYSICS:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'ICE'
   BLOCK_HIT_PROJECTILES_REMOVING:
     realtime: false
-    defaults: false
+    defaults: true
     icon:
       - 'ARROW'
   TURTLE_EGGS_TRAMPLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.13+ TURTLE_EGG'
   DRIPLEAFS_LOWERING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.17+ BIG_DRIPLEAF'
   POWDER_SNOW_MELTS_FROM_BURNING_ENTITIES:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.17+ POWDER_SNOW_BUCKET'
 BUILDING:
   LADDERS_DESTROYING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'LADDER'
   SIGNS_DESTROYING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.13.2 SIGN'
       - '1.14+ OAK_SIGN'
   RAILS_DESTROYING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 RAILS'
       - '1.13+ RAIL'
   TORCHES_DESTROYING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'TORCH'
   REDSTONE_TORCHES_DESTROYING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 REDSTONE_TORCH_ON'
       - '1.13+ REDSTONE_TORCH'
   SOUL_TORCHES_DESTROYING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.16+ SOUL_TORCH'
   SAPLINGS_DESTROYING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 SAPLING'
       - '1.13+ OAK_SAPLING'
 GRAVITY_AND_LIQUIDS:
   GRAVEL_FALLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'GRAVEL'
   SAND_FALLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'SAND'
   ANVILS_FALLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'ANVIL'
   DRAGON_EGGS_FALLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'DRAGON_EGG'
   CONCRETE_POWDERS_FALLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 CONCRETE_POWDER:5'
       - '1.13+ LIME_CONCRETE_POWDER'
   SCAFFOLDING_FALLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.14+ SCAFFOLDING'
   POINTED_DRIPSTONES_FALLING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - '1.17+ POINTED_DRIPSTONE'
   WATER_FLOWING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'WATER_BUCKET'
   LAVA_FLOWING:
     realtime: false
-    defaults: true
+    defaults: false
     icon:
       - 'LAVA_BUCKET'
 WORLD_DESTRUCTION:
   FIRE_SPREADING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - 'FLINT_AND_STEEL'
   SNOW_MELTING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - 'SNOW_BLOCK'
   FARMLANDS_DRYING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 SOIL'
       - '1.13+ FARMLAND'
   ICE_MELTING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - 'ICE'
   LEAVES_DECAY:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 LEAVES'
       - '1.13+ OAK_LEAVES'
   GRASS_BLOCKS_FADING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 GRASS'
       - '1.13+ GRASS_BLOCK'
   CORALS_DRYING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.13+ FIRE_CORAL'
   CRIMSON_NYLIUM_FADING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.16+ CRIMSON_NYLIUM'
   WARPED_NYLIUM_FADING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.16+ WARPED_NYLIUM'
   SCULKS_SPREADING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.19+ SCULK'
 GROWING_BLOCKS_AND_SMALL_PLANTS:
   GRASS_SPREADING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 GRASS'
       - '1.13+ GRASS_BLOCK'
   MYCELIUM_SPREADING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 MYCEL'
       - '1.13+ MYCELIUM'
   LITTLE_MUSHROOMS_SPREADING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - 'RED_MUSHROOM'
   PUMPKINS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - 'PUMPKIN'
   MELONS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 MELON_BLOCK'
       - '1.13+ MELON'
   NETHER_WARTS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 NETHER_STALK'
       - '1.13+ NETHER_WART'
   COCOAS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 INK_SACK:3'
       - '1.13+ COCOA_BEANS'
   WHEAT_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - 'WHEAT'
   POTATOES_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 POTATO_ITEM'
       - '1.13+ POTATO'
   CARROTS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 CARROT_ITEM'
       - '1.13+ CARROT'
   BEETROOTS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.9+ BEETROOT'
   SWEET_BERRIES_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.14+ SWEET_BERRIES'
   AMETHYST_CLUSTERS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.17+ AMETHYST_CLUSTER'
 VINES_AND_TALL_STRUCTURES:
   SUGAR_CANE_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - 'SUGAR_CANE'
   CACTUS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - 'CACTUS'
   TREES_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 SAPLING:2'
       - '1.13+ BIRCH_SAPLING'
   VINES_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - 'VINE'
   GIANT_MUSHROOMS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '*-1.12.2 HUGE_MUSHROOM_2'
       - '1.13+ RED_MUSHROOM_BLOCK'
   CHORUSES_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.9+ CHORUS_FLOWER'
   KELPS_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.13+ KELP'
   BAMBOO_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.14+ BAMBOO'
   WEEPING_VINES_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.16+ WEEPING_VINES'
   TWISTING_VINES_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.16+ TWISTING_VINES'
   POINTED_DRIPSTONES_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.17+ POINTED_DRIPSTONE'
   GLOW_BERRIES_GROWING:
     realtime: true
-    defaults: true
+    defaults: false
     icon:
       - '1.17+ GLOW_BERRIES'
 SETTINGS:

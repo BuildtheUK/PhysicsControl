@@ -23,29 +23,17 @@ public class PlayerInteractEventListener extends PhysicsListener {
         this.data, PlayerInteractEvent.class, "physical-material");
     private final MaterialRules rulesPlayerInteractEventClickedMaterial = new MaterialRules(
         this.data, PlayerInteractEvent.class, "right-clicked-material");
-    private final MaterialRules rulesPlayerInteractEventItemUsed = new MaterialRules(
-        this.data, PlayerInteractEvent.class, "item-used");
 
     public PlayerInteractEventListener(@Nonnull PControlData data, @Nonnull EventsListenerParser parser) {
         super(data);
         parser.registerParser(this.rulesPlayerInteractEventPhysicalMaterial);
         parser.registerParser(this.rulesPlayerInteractEventClickedMaterial);
-        parser.registerParser(this.rulesPlayerInteractEventItemUsed);
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.LOWEST)
     private void on(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         World world = player.getWorld();
-
-        ItemStack item = event.getItem();
-        if (item != null) {
-            PControlTrigger trigger = this.rulesPlayerInteractEventItemUsed.findTrigger(item.getType());
-            if (trigger != null) {
-                this.data.cancelIfDisabled(event, world, trigger);
-                if (event.isCancelled()) return;
-            }
-        }
 
         Block interactedBlock = event.getClickedBlock();
         if (interactedBlock == null) return;

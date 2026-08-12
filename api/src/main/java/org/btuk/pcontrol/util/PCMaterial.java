@@ -72,7 +72,7 @@ public class PCMaterial {
 
     @Nonnull
     public ItemStack createStack(int amount) {
-        return new ItemStack(this.material, amount);
+        return ItemStack.of(this.material, amount);
     }
 
     public boolean isItemMaterial(boolean allowAir) {
@@ -89,10 +89,6 @@ public class PCMaterial {
 
     public boolean isAirMaterial() {
         return MaterialUtils.isAirMaterial(this.material);
-    }
-
-    public boolean isLegacyMaterial() {
-        return MaterialUtils.isLegacyMaterial(this.material);
     }
 
     @Nonnull

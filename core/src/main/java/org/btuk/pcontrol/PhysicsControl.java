@@ -28,10 +28,9 @@ import org.btuk.pcontrol.inventory.PControlInventory;
 import org.btuk.pcontrol.listener.block.*;
 import org.btuk.pcontrol.listener.custom.BoneMealUsageListener;
 import org.btuk.pcontrol.listener.entity.EntityChangeBlockEventListener;
-import org.btuk.pcontrol.listener.entity.EntityExplodeEventListener;
 import org.btuk.pcontrol.listener.entity.EntityInteractEventListener;
-import org.btuk.pcontrol.listener.entity.ExplosionPrimeEventListener;
 import org.btuk.pcontrol.listener.entity.ProjectileHitEventListener;
+import org.btuk.pcontrol.listener.entity.ProjectileLaunchEventListener;
 import org.btuk.pcontrol.listener.player.PlayerInteractEventListener;
 import org.btuk.pcontrol.listener.world.StructureGrowEventListener;
 import org.btuk.pcontrol.rules.TriggerRules;
@@ -39,7 +38,6 @@ import org.btuk.pcontrol.rules.TriggerRules;
 import javax.annotation.Nonnull;
 import java.util.List;
 import java.util.StringJoiner;
-import java.util.function.Supplier;
 
 public final class PhysicsControl extends JavaPlugin implements Listener, BasicCommand {
     private PControlDataBukkit data;
@@ -73,49 +71,25 @@ public final class PhysicsControl extends JavaPlugin implements Listener, BasicC
     }
 
     private void registerListeners(@Nonnull EventsListenerParser parser) {
-        this.reg("org.bukkit.event.block.BlockBurnEvent",
-            () -> new BlockBurnEventListener(this.data, parser));
-        this.reg("org.bukkit.event.block.BlockFadeEvent",
-            () -> new BlockFadeEventListener(this.data, parser));
-        this.reg("org.bukkit.event.block.BlockFromToEvent",
-            () -> new BlockFromToEventListener(this.data, parser));
-        this.reg("org.bukkit.event.block.BlockGrowEvent",
-            () -> new BlockGrowEventListener(this.data, parser));
-        this.reg("org.bukkit.event.block.BlockIgniteEvent",
-            () -> new BlockIgniteEventListener(this.data, parser));
-        this.reg("org.bukkit.event.block.BlockPhysicsEvent",
-            () -> new BlockPhysicsEventListener(this.data, parser));
-        this.reg("org.bukkit.event.block.BlockSpreadEvent",
-            () -> new BlockSpreadEventListener(this.data, parser));
-        this.reg("org.bukkit.event.block.EntityBlockFormEvent",
-            () -> new EntityBlockFormEventListener(this.data, parser));
-        this.reg("org.bukkit.event.block.LeavesDecayEvent",
-            () -> new LeavesDecayEventListener(this.data, parser));
-        this.reg("org.bukkit.event.block.MoistureChangeEvent",
-            () -> new MoistureChangeEventListener(this.data, parser));
+        this.reg(new BlockBurnEventListener(this.data, parser));
+        this.reg(new BlockFadeEventListener(this.data, parser));
+        this.reg(new BlockFromToEventListener(this.data, parser));
+        this.reg(new BlockGrowEventListener(this.data, parser));
+        this.reg(new BlockIgniteEventListener(this.data, parser));
+        this.reg(new BlockPhysicsEventListener(this.data, parser));
+        this.reg(new BlockSpreadEventListener(this.data, parser));
+        this.reg(new EntityBlockFormEventListener(this.data, parser));
+        this.reg(new LeavesDecayEventListener(this.data, parser));
+        this.reg(new MoistureChangeEventListener(this.data, parser));
         this.reg(new BoneMealUsageListener(this.data, parser));
-        this.reg("org.bukkit.event.entity.EntityChangeBlockEvent",
-            () -> new EntityChangeBlockEventListener(this.data, parser));
-        this.reg("org.bukkit.event.entity.EntityInteractEvent",
-            () -> new EntityInteractEventListener(this.data, parser));
-        this.reg("org.bukkit.event.entity.EntityExplodeEvent",
-            () -> new EntityExplodeEventListener(this.data, parser));
-        this.reg("org.bukkit.event.entity.ExplosionPrimeEvent",
-            () -> new ExplosionPrimeEventListener(this.data, parser));
-        this.reg("org.bukkit.event.entity.ProjectileHitEvent",
-            () -> new ProjectileHitEventListener(this.data, parser));
-        this.reg("org.bukkit.event.player.PlayerInteractEvent",
-            () -> new PlayerInteractEventListener(this.data, parser));
-        this.reg("org.bukkit.event.world.StructureGrowEvent",
-            () -> new StructureGrowEventListener(this.data, parser));
+        this.reg(new EntityChangeBlockEventListener(this.data, parser));
+        this.reg(new EntityInteractEventListener(this.data, parser));
+        this.reg(new ProjectileHitEventListener(this.data, parser));
+        this.reg(new PlayerInteractEventListener(this.data, parser));
+        this.reg(new StructureGrowEventListener(this.data, parser));
+        this.reg(new ProjectileLaunchEventListener(this.data, parser));
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private void reg(@Nonnull String eventClassName, @Nonnull Supplier<PhysicsListener> listenerCreator) {
-        this.reg(listenerCreator.get());
-    }
-
-    @SuppressWarnings("SameParameterValue")
     private void reg(@Nonnull PhysicsListener listener) {
         listener.unregisterUnavailableTriggers();
         this.getServer().getPluginManager().registerEvents(listener, this);

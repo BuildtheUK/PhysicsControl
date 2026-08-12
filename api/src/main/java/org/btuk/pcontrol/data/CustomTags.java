@@ -27,8 +27,7 @@ public final class CustomTags {
 
         this.initSpecificTags();
 
-        File configFile = FileUtils.createConfigFileIfNotExist(this.data.getPlugin(),
-            "logics/tags.yml", "logics/tags.yml");
+        File configFile = new File(this.data.getPlugin().getDataFolder(), "logics/tags.yml");
         YamlConfiguration rootSection = YamlConfiguration.loadConfiguration(configFile);
 
         for (String tagName : rootSection.getKeys(false)) {

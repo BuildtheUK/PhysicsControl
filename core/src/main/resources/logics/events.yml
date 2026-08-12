@@ -208,33 +208,6 @@ org/bukkit/event/entity/EntityChangeBlockEvent:
     min-version: "1.19"
     from: "#physicscontrol_world_air"
     to: "frogspawn"
-  37:
-    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
-    min-version: "1.21"
-    non-falling-by:
-      - "WIND_CHARGE"
-      - "BREEZE_WIND_CHARGE"
-org/bukkit/event/entity/ProjectileHitEvent:
-  1:
-    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
-    min-version: "1.21"
-    projectile-by:
-      - "WIND_CHARGE"
-      - "BREEZE_WIND_CHARGE"
-org/bukkit/event/entity/ExplosionPrimeEvent:
-  1:
-    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
-    min-version: "1.21"
-    exploding-by:
-      - "WIND_CHARGE"
-      - "BREEZE_WIND_CHARGE"
-org/bukkit/event/entity/EntityExplodeEvent:
-  1:
-    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
-    min-version: "1.21"
-    exploding-by:
-      - "WIND_CHARGE"
-      - "BREEZE_WIND_CHARGE"
 org/bukkit/event/block/BlockFromToEvent:
   1:
     trigger: "IGNORED_STATE" # Strange thing from FluidTypeFlowing
@@ -455,10 +428,6 @@ org/bukkit/event/player/PlayerInteractEvent:
     trigger: "IGNORED_STATE"
     min-version: "1.19"
     physical-material: "sculk_shrieker"
-  10:
-    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
-    min-version: "1.21"
-    item-used: "WIND_CHARGE"
 org/bukkit/event/entity/EntityInteractEvent:
   1:
     trigger: "IGNORED_STATE"
@@ -568,3 +537,9 @@ org/bukkit/event/block/BlockPhysicsEvent:
     trigger: "SOUL_TORCHES_DESTROYING"
     min-version: "1.16"
     from: "#physicscontrol_soul_torches"
+org/bukkit/event/entity/ProjectileLaunchEvent:
+  1:
+    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
+    projectile-launched:
+      - "wind_charge"
+      - "breeze_wind_charge"

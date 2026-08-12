@@ -26,7 +26,7 @@ public class EventsListenerParser {
 
         Class<? extends Event> eventClass = trigger.getEventClass();
         List<TriggerRules<?>> listeners = this.registeredRules
-            .computeIfAbsent(eventClass, aClass -> new ArrayList<>());
+            .computeIfAbsent(eventClass, _ -> new ArrayList<>());
         if (this.getTrigger(listeners, parameterNames) != null) {
             throw new IllegalArgumentException(
                 "Duplicate parameters for event " + eventClass.getName() + ": " + parameterNames);
@@ -35,8 +35,7 @@ public class EventsListenerParser {
     }
 
     public void parseAllEvents() {
-        File configFile = FileUtils.createConfigFileIfNotExist(this.data.getPlugin(),
-            "logics/events.yml", "logics/events.yml");
+        File configFile = new File(this.data.getPlugin().getDataFolder(), "logics/events.yml");
         YamlConfiguration rootSection = YamlConfiguration.loadConfiguration(configFile);
 
         for (String eventName : rootSection.getKeys(false)) {

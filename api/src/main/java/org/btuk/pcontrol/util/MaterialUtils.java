@@ -34,28 +34,24 @@ public class MaterialUtils {
     }
 
     public static boolean isItemMaterial(@Nullable Material material, boolean allowAir) {
-        if (material == null || isLegacyMaterial(material)) return false;
+        if (material == null) return false;
         if (!material.isItem()) return false;
         return allowAir || !isAirMaterial(material);
     }
 
     public static boolean isBlockMaterial(@Nullable Material material, boolean allowAir) {
-        if (material == null || isLegacyMaterial(material)) return false;
+        if (material == null) return false;
         if (!material.isBlock()) return false;
         return allowAir || !isAirMaterial(material);
     }
 
     public static boolean isValidMaterial(@Nullable Material material, boolean allowAir) {
-        if (material == null || isLegacyMaterial(material)) return false;
+        if (material == null) return false;
         return allowAir || !isAirMaterial(material);
     }
 
     public static boolean isAirMaterial(@Nullable Material material) {
         return material == null || AIR_MATERIALS.contains(material);
-    }
-
-    public static boolean isLegacyMaterial(@Nonnull Material material) {
-        return material.name().startsWith("LEGACY_");
     }
 
     @Nonnull
@@ -68,7 +64,6 @@ public class MaterialUtils {
             PCMaterial material = PCMaterial.getMaterial(name);
             if (material != null
                 && !material.isAirMaterial()
-                && !material.isLegacyMaterial()
                 && filter.test(material)
             ) {
                 result.add(material);

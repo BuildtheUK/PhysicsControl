@@ -47,8 +47,7 @@ public class TriggersRegistry {
     }
 
     private void parseTriggers(@Nonnull CategoriesRegistry categories) {
-        File configFile = FileUtils.createConfigFileIfNotExist(this.data.getPlugin(),
-            "logics/triggers.yml", "logics/triggers.yml");
+        File configFile = new File(this.data.getPlugin().getDataFolder(), "logics/triggers.yml");
         YamlConfiguration rootSection = YamlConfiguration.loadConfiguration(configFile);
 
         for (String categoryName : rootSection.getKeys(false)) {
