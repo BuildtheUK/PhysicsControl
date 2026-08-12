@@ -7,7 +7,6 @@ import org.btuk.pcontrol.set.material.ItemTypesSet;
 import org.btuk.pcontrol.util.FileUtils;
 
 import javax.annotation.Nonnull;
-import java.io.File;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
