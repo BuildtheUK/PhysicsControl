@@ -18,21 +18,19 @@ public class CategoriesRegistry {
     private final Map<String, PControlCategory> valuesByName = new LinkedHashMap<>();
     private final PControlCategory[] allValues;
     private final PControlCategory settingsCategory;
-    private final PControlCategory testCategory;
 
     public CategoriesRegistry(@Nonnull PControlData data) {
         this.data = data;
 
         this.parseCategories();
 
-        this.allValues = new PControlCategory[this.valuesByName.values().size()];
+        this.allValues = new PControlCategory[this.valuesByName.size()];
         int i = 0;
         for (PControlCategory element : this.valuesByName.values()) {
             this.allValues[i++] = element;
         }
 
         this.settingsCategory = valueOf("SETTINGS");
-        this.testCategory = valueOf("TEST");
 
         for (PControlCategory category : this.values()) {
             try {
@@ -44,8 +42,7 @@ public class CategoriesRegistry {
     }
 
     private void parseCategories() {
-        File configFile = new File(this.data.getPlugin().getDataFolder(), "logics/categories.yml");
-        YamlConfiguration rootSection = YamlConfiguration.loadConfiguration(configFile);
+        YamlConfiguration rootSection = FileUtils.loadYamlConfig(this.data.getPlugin(), "logics/categories.yml");
 
         for (String categoryName : rootSection.getKeys(false)) {
             ConfigurationSection categorySection = rootSection.getConfigurationSection(categoryName);
@@ -83,10 +80,5 @@ public class CategoriesRegistry {
     @Nonnull
     public PControlCategory getSettingsCategory() {
         return this.settingsCategory;
-    }
-
-    @Nonnull
-    public PControlCategory getTestCategory() {
-        return this.testCategory;
     }
 }

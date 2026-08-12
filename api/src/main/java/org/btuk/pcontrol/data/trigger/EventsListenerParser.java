@@ -35,8 +35,7 @@ public class EventsListenerParser {
     }
 
     public void parseAllEvents() {
-        File configFile = new File(this.data.getPlugin().getDataFolder(), "logics/events.yml");
-        YamlConfiguration rootSection = YamlConfiguration.loadConfiguration(configFile);
+        YamlConfiguration rootSection = FileUtils.loadYamlConfig(this.data.getPlugin(), "logics/events.yml");
 
         for (String eventName : rootSection.getKeys(false)) {
             ConfigurationSection eventSection = rootSection.getConfigurationSection(eventName);

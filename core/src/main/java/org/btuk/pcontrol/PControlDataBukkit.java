@@ -74,9 +74,6 @@ public final class PControlDataBukkit implements PControlData {
             "TRIDENT"
         );
 
-        FileUtils.createConfigFileIfNotExist(plugin,
-            "logics/_READ_ME_.txt", "logics/_READ_ME_.txt");
-
         this.customTags = new CustomTags(this);
         this.typesSetsParser = new TypesSetsParser(this);
         this.customTags.parseTags();
@@ -144,16 +141,13 @@ public final class PControlDataBukkit implements PControlData {
             key -> this.triggers.valueOf(key, false), messageProcessor,
             "triggers.yml", this.triggersNames);
 
-        PControlCategory testCategory = this.categories.getTestCategory();
         for (PControlCategory category : this.categories.values()) {
             if (this.categoriesNames.containsKey(category)) continue;
             this.categoriesNames.put(category, category.name());
-            if (category == testCategory) continue;
             this.plugin.getLogger().warning("Unable to load name of category " + category);
         }
         for (PControlTrigger trigger : this.triggers.values()) {
             if (this.triggersNames.containsKey(trigger)) continue;
-            if (trigger == this.triggers.getIgnoredState()) continue;
             this.triggersNames.put(trigger, trigger.name());
             this.plugin.getLogger().warning("Unable to load name of trigger " + trigger);
         }
@@ -204,7 +198,11 @@ public final class PControlDataBukkit implements PControlData {
 
     @Nonnull
     public PControlTriggerInventory getInventory(@Nonnull PControlCategory category, @Nonnull World world) {
-        return this.inventories.get(world).get(category);
+        Map<PControlCategory, PControlTriggerInventory> worldInventories = this.inventories.computeIfAbsent(world, k -> new HashMap<>());
+        return worldInventories.computeIfAbsent(category, k -> {
+            category.prepareIcon(this);
+            return new PControlTriggerInventory(this, category, world);
+        });
     }
 
     void updateWorldData(@Nonnull World world, boolean configPriority) {
@@ -220,7 +218,6 @@ public final class PControlDataBukkit implements PControlData {
                 PControlTrigger trigger;
                 try {
                     trigger = this.triggers.valueOf(key.toUpperCase().replace(" ", "_"), false);
-                    if (trigger == this.triggers.getIgnoredState()) throw new IllegalArgumentException();
                 } catch (IllegalArgumentException e) {
                     throw new IllegalArgumentException("Unknown trigger type");
                 }
@@ -239,14 +236,7 @@ public final class PControlDataBukkit implements PControlData {
         }
 
         Map<PControlTrigger, Boolean> memoryTriggers = this.states.computeIfAbsent(world, k -> new HashMap<>());
-        Map<PControlCategory, PControlTriggerInventory> inventories = this.inventories.computeIfAbsent(world, world1 -> {
-            Map<PControlCategory, PControlTriggerInventory> result = new HashMap<>();
-            for (PControlCategory category : this.categories.values()) {
-                category.prepareIcon(this);
-                result.put(category, new PControlTriggerInventory(this, category, world));
-            }
-            return result;
-        });
+        Map<PControlCategory, PControlTriggerInventory> worldInventories = this.inventories.computeIfAbsent(world, k -> new HashMap<>());
 
         boolean firstInit = configTriggers.isEmpty();
         boolean changed = false;
@@ -259,7 +249,7 @@ public final class PControlDataBukkit implements PControlData {
             } else {
                 currentValue = memoryValue == null ? trigger.getDefaultValue() : memoryValue;
             }
-            if ((configValue == null || configValue != currentValue) && trigger != this.triggers.getIgnoredState()) {
+            if ((configValue == null || configValue != currentValue)) {
                 worldConfig.set(trigger.name(), currentValue);
                 changed = true;
                 if (!firstInit) {
@@ -269,7 +259,10 @@ public final class PControlDataBukkit implements PControlData {
             }
             if (memoryValue == null || memoryValue != currentValue) {
                 memoryTriggers.put(trigger, currentValue);
-                inventories.get(trigger.getCategory()).updateTriggerStack(trigger);
+                PControlTriggerInventory inventory = worldInventories.get(trigger.getCategory());
+                if (inventory != null) {
+                    inventory.updateTriggerStack(trigger);
+                }
             }
         }
         if (!changed) return;
@@ -297,7 +290,6 @@ public final class PControlDataBukkit implements PControlData {
 
     @Override
     public void cancelIfDisabled(@Nonnull Cancellable event, @Nonnull World world, @Nonnull PControlTrigger trigger) {
-        if (trigger == this.triggers.getIgnoredState()) return;
         if (!this.isActionAllowed(world, trigger)) {
             event.setCancelled(true);
         }
@@ -305,12 +297,10 @@ public final class PControlDataBukkit implements PControlData {
 
     @Override
     public boolean isActionAllowed(@Nonnull World world, @Nonnull PControlTrigger trigger) {
-        if (trigger == this.triggers.getIgnoredState()) throw new IllegalArgumentException();
         return this.getWorldTriggers(world).getOrDefault(trigger, false);
     }
 
     public void switchTrigger(@Nonnull World world, @Nonnull PControlTrigger trigger) {
-        if (trigger == this.triggers.getIgnoredState()) return;
         Map<PControlTrigger, Boolean> worldTriggers = this.getWorldTriggers(world);
         worldTriggers.put(trigger, !worldTriggers.get(trigger));
         this.updateWorldData(world, false);
@@ -320,7 +310,8 @@ public final class PControlDataBukkit implements PControlData {
     private Map<PControlTrigger, Boolean> getWorldTriggers(@Nonnull World world) {
         Map<PControlTrigger, Boolean> worldTriggers = this.states.get(world);
         if (worldTriggers == null) {
-            throw new IllegalArgumentException("Synchronisation error. World " + world.getName() + " not found in cache");
+            this.updateWorldData(world, true);
+            worldTriggers = this.states.get(world);
         }
         return worldTriggers;
     }

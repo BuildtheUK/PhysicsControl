@@ -69,7 +69,6 @@ public final class PControlTriggerInventory extends PControlInventory {
     }
 
     public void updateTriggerStack(@Nonnull PControlTrigger trigger) {
-        if (trigger == this.data.getTriggersRegisty().getIgnoredState()) return;
         boolean available = trigger.isAvailable();
         boolean enabled = this.data.isActionAllowed(this.world, trigger);
 
@@ -129,7 +128,6 @@ public final class PControlTriggerInventory extends PControlInventory {
     }
 
     public void switchTrigger(@Nonnull CommandSender sender, @Nonnull PControlTrigger trigger) {
-        if (trigger == this.data.getTriggersRegisty().getIgnoredState()) return;
         if (!trigger.isAvailable()) {
             return;
         }

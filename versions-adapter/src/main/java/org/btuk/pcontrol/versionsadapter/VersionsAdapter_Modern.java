@@ -41,11 +41,6 @@ public class VersionsAdapter_Modern implements VersionsAdapter {
     }
 
     @Override
-    public boolean isBoneMealItem(@Nonnull ItemStack stack) {
-        return stack.getType() == Material.BONE_MEAL;
-    }
-
-    @Override
     public boolean isBlockContainsWater(@Nonnull Block block) {
         Boolean waterlogged = this.underwaterMaterials.get(block.getType());
         if (waterlogged == null) return false;

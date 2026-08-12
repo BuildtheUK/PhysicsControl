@@ -21,7 +21,6 @@ public class TriggersRegistry {
     private final @Nonnull PControlData data;
     private final @Nonnull Map<String, PControlTrigger> valuesByName = new LinkedHashMap<>();
     private final @Nonnull PControlTrigger[] allValues;
-    private final @Nonnull PControlTrigger ignoredState;
 
     public TriggersRegistry(@Nonnull PControlData data) {
         this.data = data;
@@ -34,8 +33,6 @@ public class TriggersRegistry {
             this.allValues[i++] = element;
         }
 
-        this.ignoredState = this.valueOf("IGNORED_STATE");
-
         for (PControlTrigger trigger : this.values()) {
             try {
                 //noinspection ResultOfMethodCallIgnored
@@ -47,8 +44,7 @@ public class TriggersRegistry {
     }
 
     private void parseTriggers(@Nonnull CategoriesRegistry categories) {
-        File configFile = new File(this.data.getPlugin().getDataFolder(), "logics/triggers.yml");
-        YamlConfiguration rootSection = YamlConfiguration.loadConfiguration(configFile);
+        YamlConfiguration rootSection = FileUtils.loadYamlConfig(this.data.getPlugin(), "logics/triggers.yml");
 
         for (String categoryName : rootSection.getKeys(false)) {
             ConfigurationSection categorySection = rootSection.getConfigurationSection(categoryName);
@@ -106,10 +102,5 @@ public class TriggersRegistry {
         if (trigger == null) throw new IllegalArgumentException(name);
         if (markAvailable) trigger.markAvailable();
         return trigger;
-    }
-
-    @Nonnull
-    public PControlTrigger getIgnoredState() {
-        return this.ignoredState;
     }
 }

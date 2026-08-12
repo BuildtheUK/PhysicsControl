@@ -1,16 +1,6 @@
 wooden_doors:
-  - '*-1.12.2 wooden_door'
-  - '*-1.12.2 acacia_door'
-  - '*-1.12.2 birch_door'
-  - '*-1.12.2 dark_oak_door'
-  - '*-1.12.2 jungle_door'
-  - '*-1.12.2 spruce_door'
   - '1.13+ #wooden_doors'
 pressure_plates:
-  - '*-1.12.2 stone_plate'
-  - '*-1.12.2 gold_plate'
-  - '*-1.12.2 iron_plate'
-  - '*-1.12.2 wood_plate'
   - '1.13+ stone_pressure_plate'
   - '1.13+ light_weighted_pressure_plate'
   - '1.13+ heavy_weighted_pressure_plate'
@@ -21,30 +11,22 @@ redstone_passive_inputs:
   - 'tripwire'
   - 'lever'
   - '#physicscontrol_pressure_plates'
-  - '*-1.12.2 wood_button'
-  - '*-1.12.2 stone_button'
   - '1.13+ #buttons'
 redstone_ore_blocks:
   - 'redstone_ore'
-  - '*-1.12.2 glowing_redstone_ore'
   - '1.17+ deepslate_redstone_ore'
 water:
   - 'water'
-  - '*-1.12.2 stationary_water'
 lava:
   - 'lava'
-  - '*-1.12.2 stationary_lava'
 sand:
-  - '*-1.12.2 sand'
   - '1.13+ #sand'
 gravel:
   - 'gravel'
   - '1.20+ suspicious_gravel'
 anvil:
-  - '*-1.12.2 anvil'
   - '1.13+ #anvil'
 concrete_powders:
-  - '1.12-1.12.2 concrete_powder'
   - '1.13+ black_concrete_powder'
   - '1.13+ blue_concrete_powder'
   - '1.13+ brown_concrete_powder'
@@ -65,11 +47,7 @@ natural_gravity_blocks:
   - '#physicscontrol_sand'
   - '#physicscontrol_gravel'
 bone_meal_herbs:
-  - '*-1.12.2 long_grass'
-  - '1.13-1.20.2 grass'
   - '1.20.3+ short_grass'
-  - '*-1.12.2 yellow_flower'
-  - '*-1.12.2 red_rose'
   - '1.13+ dandelion'
   - '1.13+ poppy'
   - '1.13+ blue_orchid'
@@ -84,7 +62,6 @@ bone_meal_herbs:
   - '1.13+ lilac'
   - '1.13+ rose_bush'
   - '1.13+ peony'
-  - '1.14+ #flowers'
 little_mushrooms:
   - 'red_mushroom'
   - 'brown_mushroom'
@@ -95,66 +72,42 @@ blocks_under_water_only:
   - '1.13+ tall_seagrass'
   - '1.13+ seagrass'
 grass_block:
-  - '*-1.12.2 grass'
   - '1.13+ grass_block'
 dirt_path_block:
-  - '1.9-1.16.5 grass_path'
   - '1.17+ dirt_path'
 farmland_block:
-  - '*-1.12.2 soil'
   - '1.13+ farmland'
 mycelium_block:
-  - '*-1.12.2 mycel'
   - '1.13+ mycelium'
 sugar_cane_block:
-  - '*-1.12.2 sugar_cane_block'
   - '1.13+ sugar_cane'
 nether_wart_block:
-  - '*-1.12.2 nether_warts'
   - '1.13+ nether_wart'
 wheat_block:
-  - '*-1.12.2 crops'
   - '1.13+ wheat'
 potato_block:
-  - '*-1.12.2 potato'
   - '1.13+ potatoes'
 carrot_block:
-  - '*-1.12.2 carrot'
   - '1.13+ carrots'
 beetroot_block:
-  - '1.9-1.12.2 beetroot_block'
   - '1.13+ beetroots'
 pumpkin_stem_and_block:
   - 'pumpkin_stem'
   - 'pumpkin'
 melon_stem_and_block:
   - 'melon_stem'
-  - '*-1.12.2 melon_block'
   - '1.13+ melon'
 fences:
-  - '*-1.13.2 acacia_fence'
-  - '*-1.13.2 birch_fence'
-  - '*-1.13.2 dark_oak_fence'
-  - '*-1.13.2 jungle_fence'
-  - '*-1.13.2 spruce_fence'
-  - '*-1.12.2 fence'
-  - '*-1.12.2 nether_fence'
-  - '1.13-1.13.2 oak_fence'
-  - '1.13-1.13.2 nether_brick_fence'
   - '1.14+ #fences'
 fence_gates:
   - '1.13+ #fence_gates'
 trapdoors:
   - '1.13+ #trapdoors'
 saplings:
-  - '*-1.12.2 sapling'
   - '1.13+ #saplings'
 ladders:
   - 'ladder'
 signs:
-  - '*-1.13.2 sign'
-  - '*-1.13.2 sign_post'
-  - '*-1.13.2 wall_sign'
   - '1.14+ #standing_signs'
   - '1.14+ #wall_signs'
   - '1.14+ #signs'
@@ -166,14 +119,11 @@ rails:
   - 'activator_rail'
   - 'detector_rail'
   - 'powered_rail'
-  - '*-1.12.2 rails'
   - '1.13+ rail'
 torches:
   - 'torch'
   - '1.13+ wall_torch'
 redstone_torches:
-  - '*-1.12.2 redstone_torch_on'
-  - '*-1.12.2 redstone_torch_off'
   - '1.13+ redstone_torch'
   - '1.13+ redstone_wall_torch'
 soul_torches:
@@ -213,7 +163,15 @@ all_dead_corals:
   - '1.13+ #physicscontrol_dead_wall_corals'
   - '1.13+ #physicscontrol_dead_corals' # Contains #physicscontrol_dead_coral_plants
 end_portal_frames:
-  - '*-1.12.2 ender_portal_frame'
   - '1.13+ end_portal_frame'
 boats:
-  - '1.21.2+ #boat'
+  - '26.1.2+ oak_boat'
+  - '26.1.2+ spruce_boat'
+  - '26.1.2+ birch_boat'
+  - '26.1.2+ jungle_boat'
+  - '26.1.2+ acacia_boat'
+  - '26.1.2+ dark_oak_boat'
+  - '26.1.2+ mangrove_boat'
+  - '26.1.2+ cherry_boat'
+  - '26.1.2+ pale_oak_boat'
+  - '26.1.2+ bamboo_raft'

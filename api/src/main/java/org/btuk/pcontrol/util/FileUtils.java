@@ -1,5 +1,6 @@
 package org.btuk.pcontrol.util;
 
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.Plugin;
 
 import javax.annotation.Nonnull;
@@ -8,6 +9,7 @@ import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.function.Supplier;
@@ -81,6 +83,17 @@ public class FileUtils {
     }
 
     @Nonnull
+    public static YamlConfiguration loadYamlConfig(@Nonnull Plugin plugin, @Nullable String resourcePath) {
+        if (resourcePath != null) {
+            InputStream stream = plugin.getResource(resourcePath);
+            if (stream != null) {
+                return YamlConfiguration.loadConfiguration(new InputStreamReader(stream, StandardCharsets.UTF_8));
+            }
+        }
+        return new YamlConfiguration();
+    }
+
+    @Nonnull
     public static File createConfigFileIfNotExist(@Nonnull Plugin plugin, @Nonnull String name, @Nullable String resourceFile) {
         File configFile = new File(plugin.getDataFolder(), name);
         if (configFile.isFile()) return configFile;
@@ -113,18 +126,18 @@ public class FileUtils {
     @Nonnull
     public static Map<String, String> readCommentsFromYml(@Nonnull InputStream stream) throws IOException {
         Map<String, String> result = new HashMap<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-        while (reader.ready()) {
-            String line = reader.readLine();
-            String key = getFirstSubstring(line, ":");
-            if (key == null) continue;
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(stream))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String key = getFirstSubstring(line, ":");
+                if (key == null) continue;
 
-            String comment = getLastSubstring(line, "#");
-            if (comment == null) continue;
+                String comment = getLastSubstring(line, "#");
+                if (comment == null) continue;
 
-            result.put(key, comment);
+                result.put(key, comment);
+            }
         }
-        reader.close();
         return result;
     }
 
@@ -174,11 +187,12 @@ public class FileUtils {
     @Nonnull
     public static List<String> readLines(@Nonnull InputStream in) throws IOException {
         List<String> result = new ArrayList<>();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-        while (reader.ready()) {
-            result.add(reader.readLine());
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(in))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                result.add(line);
+            }
         }
-        reader.close();
         in.close();
         return result;
     }

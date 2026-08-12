@@ -7,7 +7,6 @@ import org.btuk.pcontrol.util.FileUtils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -27,8 +26,7 @@ public final class CustomTags {
 
         this.initSpecificTags();
 
-        File configFile = new File(this.data.getPlugin().getDataFolder(), "logics/tags.yml");
-        YamlConfiguration rootSection = YamlConfiguration.loadConfiguration(configFile);
+        YamlConfiguration rootSection = FileUtils.loadYamlConfig(this.data.getPlugin(), "logics/tags.yml");
 
         for (String tagName : rootSection.getKeys(false)) {
             this.registerMaterialTag(tagName, BlockTypesSet.createPrimitive(

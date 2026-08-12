@@ -81,9 +81,6 @@ org/bukkit/event/entity/EntityChangeBlockEvent:
     to:
       - "ender_portal_frame"
       - "end_portal_frame"
-  3:
-    trigger: "IGNORED_STATE" # Redstone ore activation
-    to: "#physicscontrol_redstone_ore_blocks"
   4:
     trigger: "SAND_FALLING"
     falling-by: "#physicscontrol_sand"
@@ -108,9 +105,6 @@ org/bukkit/event/entity/EntityChangeBlockEvent:
   11:
     trigger: "DRAGON_EGGS_FALLING"
     falling-from: "dragon_egg"
-  12:
-    trigger: "IGNORED_STATE" # On custom falling blocks fall (created by third-party plugins like WoodCutter)
-    falling-from: "#physicscontrol_world_air"
   13:
     trigger: "BURNING_ARROWS_ACTIVATE_TNT"
     non-falling-by: "arrow"
@@ -119,10 +113,6 @@ org/bukkit/event/entity/EntityChangeBlockEvent:
     trigger: "ZOMBIES_BREAK_DOORS"
     non-falling-by: "zombie"
     non-falling-from: "#physicscontrol_wooden_doors"
-  15:
-    trigger: "IGNORED_STATE" # Boats destroys lilies
-    min-version: "1.21.2"
-    non-falling-by: "#physicscontrol_boats"
   16:
     trigger: "SHEEPS_EATING_GRASS"
     non-falling-by: "sheep"
@@ -209,27 +199,15 @@ org/bukkit/event/entity/EntityChangeBlockEvent:
     from: "#physicscontrol_world_air"
     to: "frogspawn"
 org/bukkit/event/block/BlockFromToEvent:
-  1:
-    trigger: "IGNORED_STATE" # Strange thing from FluidTypeFlowing
-    from: "#physicscontrol_world_air"
-    to: "#physicscontrol_world_air"
   2:
     trigger: "LAVA_FLOWING"
     from: "#physicscontrol_lava"
   3:
     trigger: "WATER_FLOWING"
     from: "#physicscontrol_blocks_under_water_only"
-  4:
-    trigger: "IGNORED_STATE" # Seems bug while chunks generation (water near gravity blocks?): "Action BlockFromTo (GRAVEL > GRAVEL) was detected"
-    from: "#physicscontrol_natural_gravity_blocks"
   5:
     trigger: "DRAGON_EGGS_TELEPORTING"
     from: "dragon_egg"
-  6:
-    trigger: "IGNORED_STATE" # Seems bug while chunks generation (kelp near caves?): "Action BlockFromTo (KELP > AIR) was detected"
-    min-version: "1.13"
-    from: "kelp"
-    to: "#physicscontrol_world_air"
 org/bukkit/event/block/BlockFadeEvent:
   1:
     trigger: "GRASS_BLOCKS_FADING"
@@ -258,14 +236,6 @@ org/bukkit/event/block/BlockFadeEvent:
   6:
     trigger: "FIRE_SPREADING"
     from: "fire"
-    to: "#physicscontrol_world_air"
-  7:
-    trigger: "IGNORED_STATE" # Redstone ore deactivation
-    from: "#physicscontrol_redstone_ore_blocks"
-    to: "#physicscontrol_redstone_ore_blocks"
-  8:
-    trigger: "IGNORED_STATE" # Strange server action. Perhaps this is due to the fall of blocks without a base (torches for example) during generation (only in mineshafts?)
-    from: "#physicscontrol_world_air"
     to: "#physicscontrol_world_air"
   9:
     trigger: "FROSTED_ICE_PHYSICS"
@@ -358,18 +328,6 @@ org/bukkit/event/block/BlockSpreadEvent:
       - "pointed_dripstone"
       - "#physicscontrol_world_air"
     to: "pointed_dripstone"
-  13:
-    trigger: "IGNORED_STATE" # BONE_MEAL_USAGE
-    min-version: "1.17"
-    from: "#physicscontrol_world_air"
-    to: "hanging_roots"
-  14:
-    trigger: "IGNORED_STATE" # BONE_MEAL_USAGE
-    min-version: "1.17"
-    from:
-      - "glow_lichen"
-      - "#physicscontrol_world_air"
-    to: "glow_lichen"
   15:
     trigger: "AMETHYST_CLUSTERS_GROWING" # from = AIR, CAVE_AIR, WATER, etc
     min-version: "1.17"
@@ -399,12 +357,6 @@ org/bukkit/event/player/PlayerInteractEvent:
   1:
     trigger: "FARMLANDS_TRAMPLING"
     physical-material: "#physicscontrol_farmland_block"
-  2:
-    trigger: "IGNORED_STATE" # Redstone activators
-    physical-material: "#physicscontrol_redstone_passive_inputs"
-  3:
-    trigger: "IGNORED_STATE" # Redstone ore activation
-    physical-material: "#physicscontrol_redstone_ore_blocks"
   4:
     trigger: "END_PORTAL_FRAMES_FILLING"
     right-clicked-material: "#physicscontrol_end_portal_frames"
@@ -412,62 +364,14 @@ org/bukkit/event/player/PlayerInteractEvent:
     trigger: "TURTLE_EGGS_TRAMPLING"
     min-version: "1.13"
     physical-material: "turtle_egg"
-  6:
-    trigger: "IGNORED_STATE" # Control by DRIPLEAFS_LOWERING
-    min-version: "1.17"
-    physical-material: "big_dripleaf"
-  7:
-    trigger: "IGNORED_STATE"
-    min-version: "1.17"
-    physical-material: "sculk_sensor"
-  8:
-    trigger: "IGNORED_STATE"
-    min-version: "1.20"
-    physical-material: "calibrated_sculk_sensor"
-  9:
-    trigger: "IGNORED_STATE"
-    min-version: "1.19"
-    physical-material: "sculk_shrieker"
 org/bukkit/event/entity/EntityInteractEvent:
-  1:
-    trigger: "IGNORED_STATE"
-    interacted-by: "villager"
-    material: "#physicscontrol_wooden_doors"
   2:
     trigger: "FARMLANDS_TRAMPLING"
     material: "#physicscontrol_farmland_block"
-  3:
-    trigger: "IGNORED_STATE" # Redstone activators
-    material: "#physicscontrol_redstone_passive_inputs"
-  4:
-    trigger: "IGNORED_STATE" # Redstone ore activation
-    material: "#physicscontrol_redstone_ore_blocks"
   5:
     trigger: "TURTLE_EGGS_TRAMPLING"
     min-version: "1.13"
     material: "turtle_egg"
-  6:
-    trigger: "IGNORED_STATE" # Control by DRIPLEAFS_LOWERING
-    min-version: "1.17"
-    material: "big_dripleaf"
-  7:
-    trigger: "IGNORED_STATE"
-    min-version: "1.17"
-    material: "sculk_sensor"
-  8:
-    trigger: "IGNORED_STATE"
-    min-version: "1.20"
-    material: "calibrated_sculk_sensor"
-  9:
-    trigger: "WIND_CHARGE_BLOCK_INTERACTIONS"
-    min-version: "1.21"
-    interacted-by:
-      - "WIND_CHARGE"
-      - "BREEZE_WIND_CHARGE"
-    material:
-      - "#physicscontrol_redstone_passive_inputs"
-      - "#physicscontrol_fence_gates"
-      - "#physicscontrol_trapdoors"
 org/bukkit/event/block/EntityBlockFormEvent:
   1:
     trigger: "SNOW_GOLEMS_CREATE_SNOW"

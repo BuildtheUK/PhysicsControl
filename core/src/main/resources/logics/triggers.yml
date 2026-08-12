@@ -3,7 +3,6 @@ MOBS_INTERACTIONS:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 carrot_item'
       - '1.13+ carrot'
   VILLAGERS_FARMING:
     realtime: false
@@ -14,7 +13,6 @@ MOBS_INTERACTIONS:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 WOOL'
       - '1.13+ WHITE_WOOL'
   SNOW_GOLEMS_CREATE_SNOW:
     realtime: false
@@ -25,13 +23,11 @@ MOBS_INTERACTIONS:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 MONSTER_EGGS:4'
       - '1.13+ INFESTED_CRACKED_STONE_BRICKS'
   ZOMBIES_BREAK_DOORS:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 SKULL_ITEM:2'
       - '1.13+ ZOMBIE_HEAD'
   ENDERMANS_GRIEFING:
     realtime: false
@@ -42,7 +38,6 @@ MOBS_INTERACTIONS:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 SKULL_ITEM:1'
       - '1.13+ WITHER_SKELETON_SKULL'
   TURTLES_LAYING_EGGS:
     realtime: false
@@ -79,7 +74,6 @@ PLAYERS_INTERACTIONS:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 ENDER_PORTAL_FRAME'
       - '1.13+ END_PORTAL_FRAME'
   PLAYERS_BONE_MEAL_USAGE:
     realtime: false
@@ -107,7 +101,6 @@ ENTITIES_INTERACTIONS:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 SOIL'
       - '1.13+ FARMLAND'
   DRAGON_EGGS_TELEPORTING:
     realtime: false
@@ -149,13 +142,11 @@ BUILDING:
     realtime: false
     defaults: false
     icon:
-      - '*-1.13.2 SIGN'
       - '1.14+ OAK_SIGN'
   RAILS_DESTROYING:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 RAILS'
       - '1.13+ RAIL'
   TORCHES_DESTROYING:
     realtime: false
@@ -166,7 +157,6 @@ BUILDING:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 REDSTONE_TORCH_ON'
       - '1.13+ REDSTONE_TORCH'
   SOUL_TORCHES_DESTROYING:
     realtime: false
@@ -177,7 +167,6 @@ BUILDING:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 SAPLING'
       - '1.13+ OAK_SAPLING'
 GRAVITY_AND_LIQUIDS:
   GRAVEL_FALLING:
@@ -204,7 +193,6 @@ GRAVITY_AND_LIQUIDS:
     realtime: false
     defaults: false
     icon:
-      - '*-1.12.2 CONCRETE_POWDER:5'
       - '1.13+ LIME_CONCRETE_POWDER'
   SCAFFOLDING_FALLING:
     realtime: false
@@ -241,7 +229,6 @@ WORLD_DESTRUCTION:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 SOIL'
       - '1.13+ FARMLAND'
   ICE_MELTING:
     realtime: true
@@ -252,13 +239,11 @@ WORLD_DESTRUCTION:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 LEAVES'
       - '1.13+ OAK_LEAVES'
   GRASS_BLOCKS_FADING:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 GRASS'
       - '1.13+ GRASS_BLOCK'
   CORALS_DRYING:
     realtime: true
@@ -285,13 +270,11 @@ GROWING_BLOCKS_AND_SMALL_PLANTS:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 GRASS'
       - '1.13+ GRASS_BLOCK'
   MYCELIUM_SPREADING:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 MYCEL'
       - '1.13+ MYCELIUM'
   LITTLE_MUSHROOMS_SPREADING:
     realtime: true
@@ -307,19 +290,16 @@ GROWING_BLOCKS_AND_SMALL_PLANTS:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 MELON_BLOCK'
       - '1.13+ MELON'
   NETHER_WARTS_GROWING:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 NETHER_STALK'
       - '1.13+ NETHER_WART'
   COCOAS_GROWING:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 INK_SACK:3'
       - '1.13+ COCOA_BEANS'
   WHEAT_GROWING:
     realtime: true
@@ -330,13 +310,11 @@ GROWING_BLOCKS_AND_SMALL_PLANTS:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 POTATO_ITEM'
       - '1.13+ POTATO'
   CARROTS_GROWING:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 CARROT_ITEM'
       - '1.13+ CARROT'
   BEETROOTS_GROWING:
     realtime: true
@@ -368,7 +346,6 @@ VINES_AND_TALL_STRUCTURES:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 SAPLING:2'
       - '1.13+ BIRCH_SAPLING'
   VINES_GROWING:
     realtime: true
@@ -379,7 +356,6 @@ VINES_AND_TALL_STRUCTURES:
     realtime: true
     defaults: false
     icon:
-      - '*-1.12.2 HUGE_MUSHROOM_2'
       - '1.13+ RED_MUSHROOM_BLOCK'
   CHORUSES_GROWING:
     realtime: true
@@ -423,12 +399,6 @@ SETTINGS:
     icon:
       - 'PAPER'
   ALLOW_UNRECOGNIZED_ACTIONS:
-    realtime: true
-    defaults: true
-    icon:
-      - 'BARRIER'
-TEST:
-  IGNORED_STATE:
     realtime: true
     defaults: true
     icon:

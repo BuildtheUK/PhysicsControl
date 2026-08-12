@@ -26,7 +26,6 @@ import org.btuk.pcontrol.data.trigger.PControlTrigger;
 import org.btuk.pcontrol.inventory.PControlCategoryInventory;
 import org.btuk.pcontrol.inventory.PControlInventory;
 import org.btuk.pcontrol.listener.block.*;
-import org.btuk.pcontrol.listener.custom.BoneMealUsageListener;
 import org.btuk.pcontrol.listener.entity.EntityChangeBlockEventListener;
 import org.btuk.pcontrol.listener.entity.EntityInteractEventListener;
 import org.btuk.pcontrol.listener.entity.ProjectileHitEventListener;
@@ -46,7 +45,6 @@ public final class PhysicsControl extends JavaPlugin implements Listener, BasicC
     public void onEnable() {
         this.data = new PControlDataBukkit(this);
 
-        this.data.getTriggersRegisty().getIgnoredState().markAvailable();
         for (PControlTrigger trigger : this.data.getCategoriesRegistry().getSettingsCategory().getTriggers()) {
             trigger.markAvailable();
         }
@@ -81,7 +79,6 @@ public final class PhysicsControl extends JavaPlugin implements Listener, BasicC
         this.reg(new EntityBlockFormEventListener(this.data, parser));
         this.reg(new LeavesDecayEventListener(this.data, parser));
         this.reg(new MoistureChangeEventListener(this.data, parser));
-        this.reg(new BoneMealUsageListener(this.data, parser));
         this.reg(new EntityChangeBlockEventListener(this.data, parser));
         this.reg(new EntityInteractEventListener(this.data, parser));
         this.reg(new ProjectileHitEventListener(this.data, parser));
@@ -168,7 +165,6 @@ public final class PhysicsControl extends JavaPlugin implements Listener, BasicC
         String key = join("_", 1, args).toUpperCase();
         try {
             PControlTrigger trigger = this.data.getTriggersRegisty().valueOf(key, false);
-            if (trigger == this.data.getTriggersRegisty().getIgnoredState()) throw new IllegalArgumentException();
             this.data.getInventory(trigger.getCategory(), world).switchTrigger(sender, trigger);
         } catch (IllegalArgumentException e) {
             this.data.getMessage("key-not-found", "%key%", key).send(sender);
